@@ -6,4 +6,4 @@ b = float(height)
 
 bmi = int(a / (b ** 2))
 
-print(bmi)
+print(int(bmi))
