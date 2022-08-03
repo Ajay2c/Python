@@ -51,3 +51,8 @@
 # else:
 # do this       - for do this we need to learn logical operators (and , or , not)
 
+
+#.lowercase() - change names to small (or) .uppercase() - change names to Caps
+# 
+# .count() - helps to count the words (or) .count("a") - it helps to check the "a" on what word we need to check
+# 
