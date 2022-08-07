@@ -1,5 +1,8 @@
 import random
 
-random_integer = random.randint(0,3)
+random_integer = random.randint(0,1)
 
-print(random_integer)
+if random_integer == 0:
+    print("Tails")
+elif random_integer == 1:
+    print("Head")
