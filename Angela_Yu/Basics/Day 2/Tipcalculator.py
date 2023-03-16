@@ -11,7 +11,10 @@ split_total_bill = bill_and_tipamount / int(split_people)
 
 final_amount=(round(split_total_bill,2))
 
-final_amount = "{:.2f}".format(split_total_bill) #now when we run this again, using the same inputs, we now get a .60 at the very end and this is basically turned this bill_per_person, which is a float into a string. And that string is abiding by this particular format, which is the two decimal places
+final_amount = "{:.2f}".format(split_total_bill) 
+#now when we run this again, using the same inputs, we now get a .60 at
+#the very end and this is basically turned this bill_per_person, which is a float into a string. 
+# And that string is abiding by this particular format, which is the two decimal places
 
 print(f"Each person should pay: ${final_amount}")
 
