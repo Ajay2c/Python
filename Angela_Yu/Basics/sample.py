@@ -1,12 +1,17 @@
-year = int(input("which year you want to calculate?: "))
+# 🚨 Don't change the code below 👇
+row1 = ["⬜️", "⬜️", "⬜️"]
+row2 = ["⬜️", "⬜️", "⬜️"]
+row3 = ["⬜️", "⬜️", "⬜️"]
+map = [row1, row2, row3]
+print(f"{row1}\n{row2}\n{row3}")
+position = input("Where do you want to put the treasure? ")
+# 🚨 Don't change the code above 👆
 
-if year % 4 == 0:
-    if year % 100 == 0:
-        if year % 400 == 0:
-            print("Leap year")
-        elif year % 400 !=0:
-            print("Not Leap year")    
-    elif year % 100 != 0:
-        print("Not Leap year")
-elif year % 4 != 0:
-    print("Not Leap year")            
+horizontal = int(position[0]) - 1
+vertical = int(position[1]) - 1
+
+selected_row = vertical
+
+selected_row[horizontal] = "X"
+
+print(f"{row1}\n{row2}\n{row3}")

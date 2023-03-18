@@ -5,4 +5,4 @@ var names = {
     age : 22
 }
 
-console.log(names.fname);
+console.log(names.lname);
