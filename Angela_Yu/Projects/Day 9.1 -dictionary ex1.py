@@ -7,7 +7,7 @@ print(programming_dictionary["Bug"])
 
 # Adding new item to dictionary
 
-programming_dictionary["Loop"] = "This will run contionusly till bwecome false"
+programming_dictionary["Loop"] = "This  will run contionusly till bwecome false"
 
 print(programming_dictionary)
 
