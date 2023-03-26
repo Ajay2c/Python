@@ -19,10 +19,27 @@ direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-if direction != "encode" and direction != "decode":
-    print("Invalid data passed, please enter a valid message.")
-elif shift > 26:
-    new_shift = shift % 26
-    start_cipher(plain_text=text, shift_position=new_shift, cipher_direction=direction)
-else:
-    start_cipher(plain_text=text, shift_position=shift, cipher_direction=direction)
+the_game = True
+
+while the_game:
+
+    if direction != "encode" and direction != "decode":
+        print("Invalid data passed, please enter a valid message.")
+    elif shift > 26:
+        new_shift = shift % 26 
+        start_cipher(plain_text=text, shift_position=new_shift, cipher_direction=direction)
+        play_again = input(
+            "Type 'yes' if you want to go again. Otherwise type 'no'\n").lower()
+        if play_again == "no":
+            the_game = False
+            print("Game over")
+    else:
+        start_cipher(plain_text=text, shift_position=shift, cipher_direction=direction)
+        play_again = input(
+            "Type 'yes' if you want to go again. Otherwise type 'no'\n").lower()
+        if play_again == "no":
+            the_game = False
+            print("Game over")
+
+    
+
