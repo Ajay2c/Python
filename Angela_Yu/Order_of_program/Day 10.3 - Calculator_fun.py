@@ -30,26 +30,26 @@ operations = {
 
 print("Welcome to the calculator program!")
 f_number = int(input("Please enter your first number: "))
-s_number = int(input("Please enter your second number: "))
 operation_symb = input("Choose an operation (+, -, *, /, **, %): ")
+s_number = int(input("Please enter your second number: "))
 
 first_cal = operations[operation_symb]
 first_output = first_cal(f_num=f_number,s_num=s_number)
 
 print(f"{f_number} {operation_symb} {s_number} = {first_output}")
 
-want_cal_another = input(f"Type 'y' to continue calculating with {first_output}, or type 'n' to exit.: ")
+cal_again = False
+while not cal_again:
+    want_cal_another = input(f"Type 'y' to continue calculating with {first_output}, or type 'n' to exit.: ")
 
-if want_cal_another == "y":
-    cal_again = True
-    while cal_again:
-            
-        operation_symb = input("Choose an operation (+, -, *, /, **, %): ")
-        t_number = int(input("Please enter your second number: "))
-        sec_cal = operations[operation_symb]
-        sec_output = sec_cal(first_cal(f_num=f_number,s_num=s_number),t_number)
+    if want_cal_another == "y":
+                
+            operation_symb = input("Choose an operation (+, -, *, /, **, %): ")
+            t_number = int(input("Please enter your second number: "))
+            sec_cal = operations[operation_symb]
+            sec_output = sec_cal(first_output,t_number)
 
-        print(f"{first_cal} {operation_symb} {t_number} = {sec_output}")
-else:
-    cal_again = True
+            print(f"{first_output} {operation_symb} {t_number} = {sec_output}")
+    else:
+        cal_again = True
 
