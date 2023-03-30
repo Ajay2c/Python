@@ -32,13 +32,15 @@ def score():
     user_score = sum(user_card)
     comp_score = sum(comp_card)    
     
-    
+
     
     
     if user_score == 21 and len(user_score) == 2:
         return 0
     if 11 in user_card and user_score > 21:
-        return 1
+        user_card.remove(11)
+        user_card.append(1)
+        return
     
 
 
