@@ -1,13 +1,9 @@
-def add(n1, n2):
-  return n1 + n2
- 
-def subtract(n1, n2):
-  return n1 - n2
- 
-def multiply(n1, n2):
-  return n1 * n2
- 
-def divide(n1, n2):
-  return n1 / n2
- 
-print(add(2, multiply(5, divide(8, 4))))
+def my_function():
+    x = 5
+    y = 10
+    if x < y:
+        z = x + y
+        print(z)  # z is defined and can be accessed within this if block
+    print(z)  # This will give an error because z is not defined outside of the if block
+
+my_function()
