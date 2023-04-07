@@ -62,10 +62,7 @@ if b_follower_count > a_follower_count and guess == 'b':
      user_generate()
 elif a_follower_count > b_follower_count and guess == 'a':
      score +=1     
-
      
-     
-
 elif Compare_A == Against_B:
         user_generate()
 
