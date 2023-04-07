@@ -1,15 +1,13 @@
 from HigherLowerGameData import data
-from art import vs,higherlower
+from art import vs, higherlower
 import random
-
 
 
 def generate_data():
     return random.choice(data)
 
-#display the compare a 
 
-
+# display the compare a
 
 
 def format_data(account):
@@ -22,33 +20,33 @@ def format_data(account):
 
 def check_answer(guess, a_count, b_count):
     if a_count == b_count:
-        Against_B = generate_data()
+        generate_data()
     elif a_count > b_count and guess == "a":
         return guess == "a"
     elif a_count < b_count and guess == "b":
         return guess == "b"
-    
+
+
 def game():
     score = 0
-    
+
     Against_B = generate_data()
     b_follower_count = Against_B["follower_count"]
     print(b_follower_count)
-    
+
     game_start = True
-    while game_start:    
-        Compare_A = Against_B   
+    while game_start:
+        Compare_A = Against_B
         a_follower_count = Compare_A["follower_count"]
         print(a_follower_count)
-        
+
         Against_B = generate_data()
         b_follower_count = Against_B["follower_count"]
         print(b_follower_count)
-        
+
         while a_follower_count == b_follower_count:
             b_follower_count = generate_data()
 
-                    
         print(higherlower)
         print(f"Compare_A: {format_data(Compare_A)}")
         print(vs)
@@ -64,7 +62,9 @@ def game():
             game_start = False
             print(f"Sorry, that's wrong. Final score: {score}")
 
-        #compare the both
+        # compare the both
 
-        #def compare
+        # def compare
+
+
 game()
