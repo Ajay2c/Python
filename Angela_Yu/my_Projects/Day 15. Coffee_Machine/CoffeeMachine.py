@@ -54,14 +54,14 @@ def report():
 
 
 def machine_stock(user_want):
-    if user_choice == "espresso":
+    if user_want == "espresso":
         resources["water"] -= 50
         resources["coffee"] -= 18
-    elif user_choice == "latte":
+    elif user_want == "latte":
         resources["water"] -= 200
         resources["coffee"] -= 24
         resources["milk"] -= 150
-    elif user_choice == "cappuccino":
+    elif user_want == "cappuccino":
         resources["water"] -= 250
         resources["coffee"] -= 24
         resources["milk"] -= 100
