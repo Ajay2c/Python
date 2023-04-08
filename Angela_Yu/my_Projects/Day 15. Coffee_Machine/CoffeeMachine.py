@@ -24,7 +24,7 @@ MENU = {
     }
 }
 
-money = 0
+profit = 0
 resources = {
     "water": 300,
     "milk": 200,
@@ -53,7 +53,7 @@ def report():
     print(f"Coffee: {Coffee}")
 
 
-def machine_stock(user_choice):
+def machine_stock(user_want):
     if user_choice == "espresso":
         resources["water"] -= 50
         resources["coffee"] -= 18
@@ -68,39 +68,40 @@ def machine_stock(user_choice):
     return
 
 
-def machine_works(user_choice, money):
-    if user_choice == "espresso":
-        drink = MENU[user_choice]
+def machine_works(user_guess, money):
+    global drink
+    if user_guess == "espresso":
+        drink = MENU[user_guess]
         having_coin = insert_coin()
         if having_coin == 1.50 or having_coin > 1.50:
-            change = having_coin - 1.50
+            change = round(having_coin - 1.50, 2)
             money += 1.50
-            if resource_efficent(drink["ingredients"]):
-                machine_stock(user_choice)
+            if resource_efficient(drink["ingredients"]):
+                machine_stock(user_guess)
                 print(f"Here is ${change} in change")
                 print("Here is your espresso ☕️. Enjoy!")
         else:
             print("sorry you have not enough money, here your amount")
-    elif user_choice == "latte":
-        drink = MENU[user_choice]
+    elif user_guess == "latte":
+        drink = MENU[user_guess]
         having_coin = insert_coin()
         if having_coin == 2.50 or having_coin > 2.50:
-            change = having_coin - 2.50
+            change = round(having_coin - 2.50, 2)
             money += 2.50
-            if resource_efficent(drink["ingredients"]):
-                machine_stock(user_choice)
+            if resource_efficient(drink["ingredients"]):
+                machine_stock(user_guess)
                 print(f"Here is ${change} in change")
                 print("Here is your latte ☕️. Enjoy!")
         else:
             print("sorry you have not enough money, here your amount")
-    elif user_choice == "cappuccino":
-        drink = MENU[user_choice]
+    elif user_guess == "cappuccino":
+        drink = MENU[user_guess]
         having_coin = insert_coin()
         if having_coin == 3.00 or having_coin > 3.00:
-            change = having_coin - 3.00
+            change = round(having_coin - 3.00, 2)
             money += 3.00
-            if resource_efficent(drink["ingredients"]):
-                machine_stock(user_choice)
+            if resource_efficient(drink["ingredients"]):
+                machine_stock(user_guess)
                 print(f"Here is ${change} in change")
                 print("Here is your cappuccino ☕️. Enjoy!")
         else:
@@ -110,7 +111,7 @@ def machine_works(user_choice, money):
     return money
 
 
-def resource_efficent(order_items):
+def resource_efficient(order_items):
     """Returns True when order can be made, False if ingredients are insufficient."""
     for items in order_items:
         if order_items[items] > resources[items]:
@@ -128,10 +129,8 @@ while machine_start:
         machine_start = False
     elif user_choice == "report":
         report()
-        print(f"Money: ${money}")
+        print(f"Money: ${profit}")
     else:
         drink = MENU[user_choice]
-        if resource_efficent(drink["ingredients"]):
-            machine_works(user_choice, money)
-
-
+        if resource_efficient(drink["ingredients"]):
+            machine_works(user_choice, profit)
