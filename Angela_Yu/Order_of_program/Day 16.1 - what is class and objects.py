@@ -1,5 +1,5 @@
-# import turtle_game
-# print(turtle_game.ajay_size)
+import art
+print(art.ajay_size)
 
 from turtle import Turtle, Screen
 # example is: car = CarBluePrint()
