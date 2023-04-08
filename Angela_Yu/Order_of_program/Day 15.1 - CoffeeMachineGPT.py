@@ -33,7 +33,6 @@ resources = {
 
 
 def insert_coin():
-    """Returns the total calculated from coins inserted."""
     print("Please insert coins.")
     quarters = int(input("how many quarters?: ")) * 0.25
     dimes = int(input("how many dimes?: ")) * 0.10
@@ -111,7 +110,6 @@ def machine_works(user_choice, money):
 
 
 def resource_efficent(order_items):
-    """Returns True when order can be made, False if ingredients are insufficient."""
     for items in order_items:
         if order_items[items] > resources[items]:
             print(f"Sorry there is not enough {items}.")
