@@ -32,6 +32,14 @@ resources = {
 }
 
 
+def resources_sufficient(order_items):
+    for item in order_items:
+        if  resources[item] <= order_items[item]:
+            print(f"Sorry there is not enough {item}.")
+            return False
+    return True
+
+
 def insert_coin():
     """Returns the total calculated from coins inserted."""
     print("Please insert coins.")
@@ -44,93 +52,43 @@ def insert_coin():
     return total_coin
 
 
-def report():
-    Water = str(resources["water"]) + "ml"
-    Milk = str(resources["milk"]) + "ml"
-    Coffee = str(resources["coffee"]) + "g"
-    print(f"Water: {Water}")
-    print(f"Milk: {Milk}")
-    print(f"Coffee: {Coffee}")
-
-
-def machine_stock(user_want):
-    if user_want == "espresso":
-        resources["water"] -= 50
-        resources["coffee"] -= 18
-    elif user_want == "latte":
-        resources["water"] -= 200
-        resources["coffee"] -= 24
-        resources["milk"] -= 150
-    elif user_want == "cappuccino":
-        resources["water"] -= 250
-        resources["coffee"] -= 24
-        resources["milk"] -= 100
-    return
-
-
-def machine_works(user_guess, money):
-    global drink
-    if user_guess == "espresso":
-        drink = MENU[user_guess]
-        having_coin = insert_coin()
-        if having_coin == 1.50 or having_coin > 1.50:
-            change = round(having_coin - 1.50, 2)
-            money += 1.50
-            if resource_efficient(drink["ingredients"]):
-                machine_stock(user_guess)
-                print(f"Here is ${change} in change")
-                print("Here is your espresso ☕️. Enjoy!")
-        else:
-            print("sorry you have not enough money, here your amount")
-    elif user_guess == "latte":
-        drink = MENU[user_guess]
-        having_coin = insert_coin()
-        if having_coin == 2.50 or having_coin > 2.50:
-            change = round(having_coin - 2.50, 2)
-            money += 2.50
-            if resource_efficient(drink["ingredients"]):
-                machine_stock(user_guess)
-                print(f"Here is ${change} in change")
-                print("Here is your latte ☕️. Enjoy!")
-        else:
-            print("sorry you have not enough money, here your amount")
-    elif user_guess == "cappuccino":
-        drink = MENU[user_guess]
-        having_coin = insert_coin()
-        if having_coin == 3.00 or having_coin > 3.00:
-            change = round(having_coin - 3.00, 2)
-            money += 3.00
-            if resource_efficient(drink["ingredients"]):
-                machine_stock(user_guess)
-                print(f"Here is ${change} in change")
-                print("Here is your cappuccino ☕️. Enjoy!")
-        else:
-            print("sorry you have not enough money, here your amount")
-    else:
-        print("please enter the valid data")
-    return money
-
-
-def resource_efficient(order_items):
-    """Returns True when order can be made, False if ingredients are insufficient."""
-    for items in order_items:
-        if order_items[items] > resources[items]:
-            print(f"Sorry there is not enough {items}.")
-            return False
+def transaction_successful(total_user_coins, order_drink_cost):
+    global profit
+    drink_cost = order_drink_cost["cost"]
+    if total_user_coins >= drink_cost:
+        profit += drink_cost
+        change = round(total_user_coins - drink_cost, 2)
+        print(f"Here is ${change} dollars in change.")
         return True
-
-
-machine_start = True
-
-while machine_start:
-    user_choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
-
-    if user_choice == "off":
-        machine_start = False
-    elif user_choice == "report":
-        report()
-        print(f"Money: ${profit}")
     else:
+        print("Sorry that's not enough money. Money refunded.")
+        return False
+
+
+def make_coffee(user_drink):
+    for item in user_drink:
+        resources[item] -= user_drink[item]
+    return True    
+
+
+is_machine_on = True
+while is_machine_on:
+    user_choice = input("What would you like? (espresso/latte/cappuccino): ")
+    if user_choice == "off":
+        is_machine_on = False
+    elif user_choice == "report":
+        print(f"Water: {resources['water']}ml")
+        print(f"Milk: {resources['milk']}ml")
+        print(f"Coffee: {resources['coffee']}ml")
+        print(f"Money: {profit}")
+    elif user_choice in MENU:
         drink = MENU[user_choice]
-        if resource_efficient(drink["ingredients"]):
-            machine_works(user_choice, profit)
+        coffee_ingredient = drink["ingredients"]
+        if resources_sufficient(coffee_ingredient):
+            having_coins = insert_coin()
+            if transaction_successful(having_coins, drink):
+                if make_coffee(coffee_ingredient):
+                    print(f"Here is your {user_choice} ☕️. Enjoy!")
+                
+
+
