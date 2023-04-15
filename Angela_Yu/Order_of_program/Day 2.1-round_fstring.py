@@ -20,6 +20,6 @@ isWinning = True
 
 print(f"Your score is:{score}")
 
-print(f"Your score is:{score},your height is{height},your Winning is{isWinning}")
+print(f"Your score is:{score},your height is{height},your Winning is {isWinning}")
 
 

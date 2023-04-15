@@ -26,6 +26,7 @@ def computer_generate():
     print(country)
     folllower_count = getdata_from_dictonary["follower_count"]
     print(folllower_count)
+    print(f"Compare A: {name}, a {description}, from {country}.")
     return folllower_count
 
 Compare_A = computer_generate()
@@ -42,30 +43,31 @@ def user_generate():
     print(country)
     folllower_count = getdata_from_dictonary["follower_count"]
     print(folllower_count)
-    print(f"Compare A: {name}, a {description}, from {country}.")
+    print(f"Against B: {name}, a {description}, from {country}.")
     return folllower_count
 
 Against_B = user_generate()
 
-print(f"Compare A: {computer_generate()}.")
-print(vs)
-print(f"Against B: {user_generate()}.")
-    
-guess = input("Who has more followers? Type 'A' or 'B': ").lower()
-a_follower_count = computer_generate["follower_count"]
-b_follower_count = user_generate["follower_count"]
+
+def game():   
+    print(f"Compare A: {computer_generate()}.")
+    print(vs)
+    print(f"Against B: {user_generate()}.")
+        
+    guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+    a_follower_count = Compare_A
+    b_follower_count = Against_B
 
 
-if b_follower_count > a_follower_count and guess == 'b':
-     score += 1
-     a_follower_count = b_follower_count
-     user_generate()
-elif a_follower_count > b_follower_count and guess == 'a':
-     score +=1     
-     
-elif Compare_A == Against_B:
+    if b_follower_count > a_follower_count and guess == 'b':
+        score += 1
+        a_follower_count = b_follower_count
         user_generate()
+        print(score)
+    elif a_follower_count > b_follower_count and guess == 'a':
+        score +=1
+        print(score)
+        game()
 
-
-
-
+    elif Compare_A == Against_B:
+            user_generate()
