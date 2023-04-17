@@ -70,13 +70,13 @@ space_contain_words = []
 
 for letter_length in range(choosen_word_len):
     space_contain_words += "_"
-    print(letter_length)
+    #print(letter_length)
 
 lives = 7 
 
+print("Hi welcome to the hangman challenge!!!!")
 while not lives == 0:
     if "_" in space_contain_words:    
-        print("Hi welcome to the hangman challenge!!!!")
         user_guess = input(f"please enter the letter to check what word you going to find:").lower()
 
         if user_guess not in choosen_word:

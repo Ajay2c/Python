@@ -54,18 +54,18 @@ for symb in range(1, nr_symbols + 1):
 for numb in range(1, nr_numbers + 1):
     password_list += random.choice(numbers)  # password_list =[char,symb,numb]
 
-print(password_list)  # ['i', 'y', 'o', 'E', '%', '+', '2']
+#print(password_list)  # ['i', 'y', 'o', 'E', '%', '+', '2']
 
 random.shuffle(password_list)
 
-print(password_list)  # ['%', '+', '2', 'o', 'i', 'y', 'E']
+#print(password_list)  # ['%', '+', '2', 'o', 'i', 'y', 'E']
 
 # need to store from this ['%', '+', '2', 'o', 'i', 'y', 'E']  to  this %+2oiyE
 new_char = ""
 
 for i in password_list:
     new_char += i
-    print(i)
+    #print(i)
 print(new_char)
 
 
