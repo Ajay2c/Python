@@ -16,7 +16,7 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 # Hard Level - Order of characters randomised:
 # e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
 
-password = ""
+password = []
 
 letter_lenth = len(letters)
 numbers_lenth = len(numbers)
@@ -24,12 +24,27 @@ symbols_lenth = len(symbols)
 
 print(f"{letter_lenth},{numbers_lenth},{symbols_lenth}")
 
-letter_random = random.randint(1,nr_letters)
+total_length = nr_letters + nr_numbers + nr_symbols
 
+for let in range(0,nr_letters):
+    password += random.choice(letters)
+for num in range(0,nr_numbers):
+    password += random.choice(numbers)
+for sym in range(0,nr_symbols):
+    password += random.choice(symbols)
 
-for let in range(0,letter_random):
-    password += str(letters[let])
+print(password)
+
+random.shuffle(password)
 
 print(password)
 
 
+#print(hard_password)
+
+hard_password = ""
+
+for i in password:
+    hard_password += i
+
+print(hard_password)
