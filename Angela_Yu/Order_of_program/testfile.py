@@ -1,6 +1,11 @@
-# Define list of student names
-names = ['Jess', 'Emma', 'Kelly']
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+    list_avg = list(arr)
+    list_avg.sort()
 
-# iterates over name list and prints each name
-for student in names:
-   print(student, end=' ')
+    # avg = 0
+    # for i in arr:
+    #     if avg < i:
+    #         avg = i
+    # print(avg)
